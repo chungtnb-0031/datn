@@ -1,0 +1,34 @@
+<div class="notification_wrapper">
+  <a class="dropdown_notification">
+    <p class="notification_count" id="notification_count">
+      <i class="fas fa-bell fa-lg notification-icon"></i>
+      <span class="<%= 'unopened' if @target.has_unopened_notifications?(parameters) %>">
+        <%= @target.unopened_notification_count(parameters) %>
+      </span>
+    </p>
+  </a>
+  <div class="notification_list_wrapper">
+    <div class="notification_header_wrapper">
+      <p class="notification_header_title">
+        <%= t"label.notifications" %>
+      </p>
+      <p class="notification_header_menu">
+        <% if @target.class.subscription_enabled? %>
+          <%= link_to "Subscriptions", subscriptions_path_for(@target, parameters.slice(:routing_scope, :devise_default_routes)) %>
+        <% end %>
+      </p>
+    </div>
+    <div class="notifications">
+      <%= yield :notification_index %>
+    </div>
+    <%= link_to notifications_path_for(@target, parameters.slice(:routing_scope, :devise_default_routes)) do %>
+      <div class="notification_link_wrapper">
+        <p class="notification_link">
+          <%= t"label.see_all" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= javascript_include_tag "notification" %>

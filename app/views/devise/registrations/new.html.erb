@@ -1,0 +1,69 @@
+<% provide :title, t("page_title.signup") %>
+<% provide :header_partial, "shared/header_partial/title" %>
+
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <%= form_for resource, as: resource_name, url: registration_path(resource_name),html: {class: "p-5 bg-white", style: "margin-top: -150px;"} do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="row form-group">
+            <div class="col-md-12">
+              <%= f.label :username, class: "text-black" %>
+              <%= f.text_field :username, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <%= f.label :email, class: "text-black" %>
+              <%= f.email_field :email, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <%= f.label :date_of_birth, class: "text-black" %>
+              <div>
+                <%= f.date_field :date_of_birth %>
+              </div>
+            </div>
+          </div>
+
+           <div class="row form-group">
+            <div class="col-md-12">
+              <%= f.label :gender, class: "text-black" %>
+              <div>
+                <%= f.radio_button :gender, Settings.user.gender.male %><span class="option"> Male<span>
+                <%= f.radio_button :gender, Settings.user.gender.female %><span class="option"> Female<span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <%= f.label :password %>
+              <%= f.password_field :password, class: "form-control", autocomplete: "new-password" %>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "new-password" %>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <%= f.submit t("button.create_account"), class: "btn btn-primary btn-md text-white" %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

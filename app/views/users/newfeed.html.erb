@@ -1,0 +1,36 @@
+<% provide :title, t("page_title.newfeed") %>
+<% provide :header_partial, "shared/header_partial/title" %>
+
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="alert"></div>
+    <div class="row">
+      <aside class="col-md-4">
+        <div class="card card-profile">
+          <div class="card-body">
+            <%= gravatar_for current_user %>
+            <strong><%= link_to current_user.username, current_user %></strong>
+            <hr>
+            <section class="stats">
+              <%= render "shared/stats" %>
+            </section>
+            <hr>
+            <%= render "follow_form" if user_signed_in? %>
+          </div>
+        </div>
+      </aside>
+
+      <div class="col-md-8">
+        <% if @feed_items.any? %>
+          <ol class="posts">
+            <%= render @feed_items %>
+          </ol>
+          <%= paginate @feed_items, theme: "twitter-bootstrap-4" %>
+        <% else %>
+          <p class="text-primary text_center"><%= t ("You dont have any post!") %></p>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

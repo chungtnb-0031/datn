@@ -1,0 +1,21 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import 'ionicons';
+@import 'admin/css/AdminLTE.min';
+@import 'admin/css/_all-skins.min';
+
+.user-panel > .image > .img-circle {
+    width: 100%;
+    max-width: 45px;
+    height: auto;
+}
+.navbar-nav > .user-menu .user-image {
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -2px;
+}

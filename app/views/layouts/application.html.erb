@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title yield :title %></title>
+    <%= render "layouts/rails_default" %>
+  </head>
+  <body>
+    <div class="site-wrap">
+      <%= render "layouts/header" %>
+      <%= yield %>
+      <%= render "layouts/footer" %>
+    </div>
+  </body>
+</html>

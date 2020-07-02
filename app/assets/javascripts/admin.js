@@ -1,0 +1,10 @@
+//= require rails-ujs
+//= require activestorage
+//= require turbolinks
+//= require jquery
+//= require jquery.slimscroll.min
+//= require fastclick
+//= require bootstrap-sprockets
+//= require admin/js/jquery.min
+//= require admin/js/adminlte.min
+//= require admin/js/admin

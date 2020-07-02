@@ -1,0 +1,2 @@
+$(".notification_count").html("<i class='fas fa-bell fa-lg notification-icon'></i> <span class=\"<%= 'unopened' if @target.has_unopened_notifications?(@index_options) %>\"><%= @target.unopened_notification_count(@index_options) %></span>");
+$('<%= ".notification_#{@notification.id}" %>').remove();

@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: <mysql_user_name>
+  password: <mysql_user_password>
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: <db_name>
+
+production:
+  <<: *default
+  host: <db_server_IP>
+  username: <mysql_user_name>
+  password: <mysql_user_password>
+  database: <db_name>

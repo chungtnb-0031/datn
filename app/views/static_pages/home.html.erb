@@ -1,0 +1,69 @@
+<% provide :title, t(".home") %>
+<% provide :header_partial, "shared/header_partial/search" %>
+
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center border-primary">
+        <h2 class="font-weight-light text-primary"><%= t ".popular-category" %></h2>
+      </div>
+    </div>
+
+    <div class="row align-items-stretch">
+      <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-4">
+        <%= link_to travel_places_list_place_path(id: 1) , class: "popular-category h-100" do %>
+          <span class="icon mb-3"><span class="flaticon-hotel"></span></span>
+          <span class="caption mb-2 d-block"><%= t ".hotels" %></span>
+          <span class="number"><%= @hotels.count %></span>
+        <% end %>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-4">
+        <%= link_to travel_places_list_place_path(id: 3) , class: "popular-category h-100" do %>
+          <span class="icon mb-3"><span class="flaticon-cutlery"></span></span>
+          <span class="caption mb-2 d-block"><%= t ".restaurents" %></span>
+          <span class="number"><%= @foods.count %></span>
+        <% end %>
+      </div>
+      <div class="col-6 col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-4">
+        <%= link_to travel_places_list_place_path(id: 2) , class: "popular-category h-100" do %>
+          <span class="icon mb-3"><span class="flaticon-bike"></span></span>
+          <span class="caption mb-2 d-block"><%= t ".other" %></span>
+          <span class="number"><%= @travels.count %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section" >
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-7 text-center border-primary">
+        <h2 class="font-weight-light text-primary"><%= t ".popular-places" %></h2>
+      </div>
+    </div>
+    <div class="row">
+      <% @recommend_places.each  do |travel_place| %>
+        <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
+          <div class="listing-item">
+            <div class="listing-image">
+              <% if travel_place.cacheable.travel_place_images.first %>
+                <%= image_tag(travel_place.cacheable.travel_place_images.first.link, class: "img-fluid popular_post_image") %>
+              <% end %>
+            </div>
+            <div class="listing-item-content">
+              <%= link_to "#", class: "bookmark", data:{toggle: "tooltip", placement: "left"} do %>
+                <span class="icon-heart"></span>
+              <% end %>
+              <%= link_to travel_place.cacheable.type_travel_place.name, detail_index_path(name: travel_place.cacheable.name), class: "px-3 mb-3 category" %>
+              <h2 class="mb-1">
+                <%= link_to travel_place.cacheable.name, detail_index_path(name: travel_place.cacheable.name) %>
+              </h2>
+              <span class="address"><%= travel_place.cacheable.address %></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
