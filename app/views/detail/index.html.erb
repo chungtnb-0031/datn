@@ -29,15 +29,6 @@
 
           </div>
           <p class="mb-5 text_content "><%= truncate(@places.content, length: Settings.truncate_length.place_content) %></p>
-          <% if user_signed_in? %>
-            <div class="mb-3 button_bottom">
-                <div class="box_center">
-                  <%= link_to current_user do %>
-                    <span class="btn btn-primary btn-md text-white"><%= t ".review_place" %></span>
-                  <% end %>
-                </div>
-            </div>
-          <% end %>
         </div>
       </div>
       <div class="mb-5">

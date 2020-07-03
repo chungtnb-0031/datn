@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 2019_08_09_074414) do
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "title"
     t.text "content"
-    t.integer "view"
     t.bigint "user_id"
     t.bigint "travel_place_id"
     t.datetime "created_at", null: false
@@ -153,7 +152,6 @@ ActiveRecord::Schema.define(version: 2019_08_09_074414) do
     t.string "name"
     t.text "content"
     t.string "address"
-    t.float "rate_point"
     t.bigint "type_travel_place_id"
     t.bigint "city_id"
     t.datetime "created_at", null: false

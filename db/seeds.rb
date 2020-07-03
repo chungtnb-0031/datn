@@ -22,7 +22,6 @@ cities.each do |city|
       TravelPlace.create! name: Faker::Restaurant.name,
         content: Faker::Restaurant.description,
         address: Faker::Address.street_address,
-        rate_point: 2.5,
         city_id: city.id,
         type_travel_place_id: type_travel_place.id
     end
@@ -75,7 +74,6 @@ users.each do |user|
     7.times do
       Post.create! title: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
                    content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
-                   view: Faker::Number.between(from: 1,to: 20),
                    user_id: user.id,
                    travel_place_id: Faker::Number.between(from: 1,to: 30)
     end
@@ -95,7 +93,6 @@ users.each do |user|
   2.times do
     Post.create! title: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
                  content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
-                 view: Faker::Number.between(from: 1,to: 20),
                  user_id: user.id,
                  travel_place_id: Faker::Number.between(from: 1,to: 30)
   end
