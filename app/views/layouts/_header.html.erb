@@ -56,9 +56,16 @@
                     </li>
                     <li>
                       <%= link_to edit_user_registration_path do %>
-                        <span><%= t "label.settings" %></span>
+                        <span> Edit Profile </span>
                       <% end %>
                     </li>
+					<% if current_user.admin == true %>
+						<li>
+						<%= link_to rails_admin_path do %>
+							<span> Admin Page </span>
+						<% end %>
+						</li>
+					<% end %>
                     <li>
                       <%= link_to destroy_user_session_path, method: :delete do %>
                         <span><%= t "label.logout" %></span>

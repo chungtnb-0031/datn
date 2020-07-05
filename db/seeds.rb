@@ -1,3 +1,5 @@
+Faker::Config.locale = :en
+
 10.times do
   City.create(
     name: Faker::Address.city
@@ -18,12 +20,13 @@ cities = City.order('name ASC').take(3)
 type_travel_places = TypeTravelPlace.order(:created_at)
 cities.each do |city|
   type_travel_places.each do |type_travel_place|
-    5.times do
-      TravelPlace.create! name: Faker::Restaurant.name,
-        content: Faker::Restaurant.description,
-        address: Faker::Address.street_address,
-        city_id: city.id,
-        type_travel_place_id: type_travel_place.id
+	5.times do
+		Faker::Config.locale = :en
+      	TravelPlace.create! name: Faker::Restaurant.name,
+			content: Faker::Restaurant.description,
+			address: Faker::Address.street_address,
+			city_id: city.id,
+			type_travel_place_id: type_travel_place.id
     end
   end
 end
@@ -71,8 +74,9 @@ end
 
 users = User.order(:id).take(2)
 users.each do |user|
-    7.times do
-      Post.create! title: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
+	7.times do
+		Faker::Config.locale = :en
+      	Post.create! title: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
                    content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
                    user_id: user.id,
                    travel_place_id: Faker::Number.between(from: 1,to: 30)
@@ -91,6 +95,7 @@ followers.each { |follower| follower.follow(user) }
 users = User.first.following.take(2)
 users.each do |user|
   2.times do
+	Faker::Config.locale = :en
     Post.create! title: Faker::Lorem.sentence(word_count: 3, supplemental: true, random_words_to_add: 4),
                  content: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
                  user_id: user.id,
